@@ -316,7 +316,7 @@ VERBOSE=`setVerbose "$@" 2> /dev/null`
 
 if [ $VERBOSE == "is_set" ]; then
     echo -e "\n################"
-    echo -e "# Check optons #"
+    echo -e "# Check options #"
     echo -e "################"
     echo "VMID: $VMID"
     echo "COMPRESS: $COMPRESS"
@@ -436,7 +436,7 @@ if [ $SPMAXFILES -gt 0 ]; then
             FILE=${BACKUP_FILES[$i]}
             FILE_WITH_PATH=$SP_PATH$SLASH$FILE
             if [ $VERBOSE == "is_set" ]; then
-                echo -e "\nRemoving $FILE_WITH_PATH from $SP_URL"
+                echo -e "\nRemoving \"/$FILE_WITH_PATH\" from \"$SP_URL\"\n"
                 /usr/local/bin/m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --verbose --confirm
             else
                 /usr/local/bin/m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --confirm
@@ -460,10 +460,12 @@ if [ $VERBOSE == "is_set" ]; then
     sleep 1
     echo -e "\nSTORAGE PATH: $STORAGE_PATH"
     sleep 1
-    echo "UPLOADED FILE: $UPLOADED_FILE"
+    echo "UPLOADED FILE: $UPLOADED_FILE\n"
     sleep 1
     /usr/local/bin/m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE" --verbose
-    echo -e "\n\nEnd of script"
+    echo -e "\n\n"
+    date
+    echo -e "End of script"
 else
     /usr/local/bin/m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE"
 fi
