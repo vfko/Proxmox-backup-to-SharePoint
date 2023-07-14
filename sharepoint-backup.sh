@@ -437,9 +437,9 @@ if [ $SPMAXFILES -gt 0 ]; then
             FILE_WITH_PATH=$SP_PATH$SLASH$FILE
             if [ $VERBOSE == "is_set" ]; then
                 echo -e "\nRemoving $FILE_WITH_PATH from $SP_URL"
-                m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --verbose --confirm
+                /usr/local/bin/m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --verbose --confirm
             else
-                m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --confirm
+                /usr/local/bin/m365 spo file remove --webUrl "$SP_URL" --url "$FILE_WITH_PATH" --confirm
             fi
 
         done
@@ -462,8 +462,8 @@ if [ $VERBOSE == "is_set" ]; then
     sleep 1
     echo "UPLOADED FILE: $UPLOADED_FILE"
     sleep 1
-    m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE" --verbose
+    /usr/local/bin/m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE" --verbose
     echo -e "\n\nEnd of script"
 else
-    m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE"
+    /usr/local/bin/m365 spo file add -u "$SP_URL" -f "$SP_PATH" -p "$UPLOADED_FILE"
 fi
